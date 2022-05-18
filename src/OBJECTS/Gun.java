@@ -22,4 +22,5 @@ public class Gun extends JButton {
         button.setText("UPGRADE GUN");
     }
 
+
 }

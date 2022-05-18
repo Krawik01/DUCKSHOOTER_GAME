@@ -9,7 +9,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,8 +24,9 @@ public class Game extends JFrame {
     JPanel frontPanel = new JPanel();
     JFrame frameG = new JFrame();
     ImageIcon icon = new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\out\\production\\DUCKSHOOTER\\RESOURCES\\GameBackGround.jpg");
+    int mode;
 
-    public Game() throws IOException {
+    public Game(int mode) throws IOException {
 
 //        String nick = JOptionPane.showInputDialog(null,
 //                "Your nickname: ",
@@ -35,25 +35,12 @@ public class Game extends JFrame {
 //        players.add(nick);
        // setBackground();
 
+        System.out.println("mode: " + mode);
 
 
 
         panel.setOpaque(true);
         panel.setLayout(null);
-
-//        addMovingduck(800,"yellow");
-//
-//        addMovingduck(710,"red");
-//
-//       addMovingduck(600, "purple");
-//
-//
-
-        // DUCKSCOMING(timer.days);
-       // setBackground();
-
-
-
 
 
         Gun gun = new Gun(panel,1);
@@ -72,12 +59,10 @@ public class Game extends JFrame {
         });
 
 
-        DucksComing ducksComing = new DucksComing(panel,gun);
+        DucksComing ducksComing = new DucksComing(panel,gun,mode);
         ducksComing.start();
 
 
-//        frameG.add(frontPanel);
-//        setBackground();
 
         Timer timer = new Timer(panel);
         timer.start();
@@ -95,14 +80,7 @@ public class Game extends JFrame {
         frameG.setResizable(false);
         frameG.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frameG.setVisible(true);
-
         setBackground();
-     //   frameG.add(frontPanel);
-
-//        JLabel backGround= new JLabel("", icon, JLabel.CENTER);
-//        backGround.setBounds(0,0,1940,1080);
-//        panel.add(backGround);
-
     }
 
     public void setBackground() {

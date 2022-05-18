@@ -8,70 +8,70 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
-public class DucksComing extends Thread {
+public class DucksComing extends Thread implements Mode {
 
     JPanel panel;
-
-
-    int day;
     Gun gun;
+    int mode;
    public static JLabel pointsL = new JLabel("score " + Points.getValue());
 
-    public DucksComing(JPanel panel,Gun gun){
+    public DucksComing(JPanel panel,Gun gun,int mode){
         this.panel = panel;
         this.gun = gun;
+        this.mode = mode;
     }
 
     public void run() {
 
         while (!isInterrupted()) {
-             levels(gun,panel);
+             levels(gun,panel,mode);
         }
 
     }
 
-    public static void levels(Gun gun, JPanel panel){
+    public static void levels(Gun gun, JPanel panel,int mode){
 
         String r = "right";
         String l = "left";
 
         //stage 1
         if(Points.getValue() <= 80) {
-            addMovingduck(540,"yellow",gun,panel,r);
-            addMovingduck(700,"red",gun,panel,l);
-            addMovingduck(780,"yellow",gun,panel,l);
+
+            addMovingduck(540,"yellow",gun,panel,r,mode);
+            addMovingduck(700,"red",gun,panel,l,mode);
+            addMovingduck(780,"yellow",gun,panel,l,mode);
 
 
             wait(2000);
 
-            addMovingduck(620,"red",gun,panel,l);
-            addMovingduck(850,"yellow",gun,panel,r);
+            addMovingduck(620,"red",gun,panel,l,mode);
+            addMovingduck(850,"yellow",gun,panel,r,mode);
 
 
             wait(4000);
 
-            addMovingduck(460,"yellow",gun,panel,r);
-            addMovingduck(940,"red",gun,panel,l);
-            addMovingduck(700,"yellow",gun,panel,r);
+            addMovingduck(460,"yellow",gun,panel,r,mode);
+            addMovingduck(940,"red",gun,panel,l,mode);
+            addMovingduck(700,"yellow",gun,panel,r,mode);
 
             wait(3000);
 
             }
         //stage 2
         if((Points.getValue() > 80)&&(Points.getValue() <= 200)){
-            addMovingduck(460,"red",gun,panel,r);
-            addMovingduck(860,"purple",gun,panel,l);
-            addMovingduck(620,"yellow",gun,panel,r);
+            addMovingduck(460,"red",gun,panel,r,mode);
+            addMovingduck(860,"purple",gun,panel,l,mode);
+            addMovingduck(620,"yellow",gun,panel,r,mode);
 
             wait(3000);
 
-            addMovingduck(940,"red",gun,panel,r);
-            addMovingduck(700,"purple",gun,panel,l);
+            addMovingduck(940,"red",gun,panel,r,mode);
+            addMovingduck(700,"purple",gun,panel,l,mode);
 
             wait(4000);
 
-            addMovingduck(540,"yellow",gun,panel,l);
-            addMovingduck(860,"pink",gun,panel,r);
+            addMovingduck(540,"yellow",gun,panel,l,mode);
+            addMovingduck(860,"pink",gun,panel,r,mode);
 
             wait(3000);
         }
@@ -88,7 +88,7 @@ public class DucksComing extends Thread {
     }
 
 
-    public static void addMovingduck(int start, String type, Gun gun, JPanel panel,String from) {
+    public static void addMovingduck(int start, String type, Gun gun, JPanel panel,String from,int mode) {
        Duck duck = new Duck(type,panel,from, start);
 
 
@@ -97,8 +97,6 @@ public class DucksComing extends Thread {
        panel.add(pointsL);
 
 
-
-       //LOL
 
        if(Objects.equals(from,"left")) {
            if (Objects.equals(type, "yellow")) {
@@ -137,7 +135,7 @@ public class DucksComing extends Thread {
        }
 
 
-        Move move = new Move(duck, duck, panel, start, from);
+        Move move = new Move(duck, duck, panel, start, from,mode);
 
         final int[] clicks = {0};
 

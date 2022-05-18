@@ -12,14 +12,16 @@ public class Move extends Thread {
     public JPanel panel;
     public int starty;
     String from;
+    int mode;
 
 
-    Move(Duck duck, JButton button, JPanel panel, int starty, String from) {
+    Move(Duck duck, JButton button, JPanel panel, int starty, String from,int mode) {
         this.duck = duck;
         this.starty = starty;
         this.button = button;
         this.panel = panel;
         this.from = from;
+        this.mode = mode;
     }
 
     public void run() {
@@ -28,11 +30,13 @@ public class Move extends Thread {
 
 
             try {
-                this.sleep(5);
+                this.sleep(7);
             } catch (InterruptedException exc) {
                 interrupt();
               //  break;
             }
+
+
 
             if (from.equals("left")) {
                 if (duck.getX() > 1940) {
@@ -43,7 +47,7 @@ public class Move extends Thread {
                     interrupt();
                     break;
                 } else {
-                    duck.loc(button, panel, duck.getX() + 1, starty, "left");
+                    duck.loc(button, panel, duck.getX() + mode, starty, "left");
 
                 }
             }
@@ -58,7 +62,7 @@ public class Move extends Thread {
                     interrupt();
                     break;
                 } else {
-                    duck.loc(button, panel, duck.getX() - 1, starty, "right");
+                    duck.loc(button, panel, duck.getX() - mode, starty, "right");
                 }
             }
         }

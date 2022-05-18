@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-public class GameModeFrame extends JFrame {
+public class GameModeFrame extends JFrame implements Mode {
 
     JPanel panel = new JPanel(){
         public void paint (Graphics g){
@@ -53,7 +53,7 @@ public class GameModeFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 SwingUtilities.invokeLater(() -> {
                     try {
-                        new Game();
+                        new Game(setMode(1));
                     } catch (IOException ex) {
                         ex.printStackTrace();
                     }
@@ -68,13 +68,37 @@ public class GameModeFrame extends JFrame {
         medium.setFont(buttonFont);
         medium.setBackground(Color.yellow);
 
+        medium.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(() -> {
+                    try {
+                        new Game(setMode(2));
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                });
+            }
+        });
+
     }
     public void setHardButton(Font buttonFont){
         panel.add(hard);
         hard.setPreferredSize(new Dimension(400,55));
         hard.setFont(buttonFont);
         hard.setBackground(Color.yellow);
-
+        hard.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(() -> {
+                    try {
+                        new Game(setMode(3));
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                });
+            }
+        });
     }
 
 }
