@@ -96,23 +96,42 @@ public class DucksComing extends Thread {
        pointsL.setLocation(100,100);
        panel.add(pointsL);
 
-        if(Objects.equals(type, "yellow")){
-            duck.setBackground(Color.YELLOW);
-            duck.setIcon(new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\src\\RESOURCES\\YellowDucK.png"));
-        }
-        if(Objects.equals(type, "red")){
-            duck.setBackground(Color.red);
-            duck.setIcon(new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\src\\RESOURCES\\RedDucK.png"));
-        }
-        if(Objects.equals(type, "purple")){
-            duck.setBackground(Color.blue);
-            duck.setIcon(new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\src\\RESOURCES\\PurpleDucK.png"));
-        }
-        if(Objects.equals(type, "pink")){
-            duck.setBackground(Color.pink);
-            duck.setIcon(new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\src\\RESOURCES\\PinkDucK.png"));
-        }
 
+       if(Objects.equals(from,"left")) {
+           if (Objects.equals(type, "yellow")) {
+               duck.setBackground(Color.YELLOW);
+               duck.setIcon(new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\src\\RESOURCES\\YellowDuckR.png"));
+           }
+           if (Objects.equals(type, "red")) {
+               duck.setBackground(Color.red);
+               duck.setIcon(new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\src\\RESOURCES\\RedDuckR.png"));
+           }
+           if (Objects.equals(type, "purple")) {
+               duck.setBackground(Color.blue);
+               duck.setIcon(new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\src\\RESOURCES\\PurpleDuckR.png"));
+           }
+           if (Objects.equals(type, "pink")) {
+               duck.setBackground(Color.pink);
+               duck.setIcon(new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\src\\RESOURCES\\PinkDuckR.png"));
+           }
+       } else {
+           if (Objects.equals(type, "yellow")) {
+               duck.setBackground(Color.YELLOW);
+               duck.setIcon(new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\src\\RESOURCES\\YellowDuckL.png"));
+           }
+           if (Objects.equals(type, "red")) {
+               duck.setBackground(Color.red);
+               duck.setIcon(new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\src\\RESOURCES\\RedDuckL.png"));
+           }
+           if (Objects.equals(type, "purple")) {
+               duck.setBackground(Color.blue);
+               duck.setIcon(new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\src\\RESOURCES\\PurpleDuckL.png"));
+           }
+           if (Objects.equals(type, "pink")) {
+               duck.setBackground(Color.pink);
+               duck.setIcon(new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\src\\RESOURCES\\PinkDuckL.png"));
+           }
+       }
 
 
         Move move = new Move(duck, duck, panel, start, from);
