@@ -1,4 +1,4 @@
-package GAME;
+package GAME.Threads;
 
 import OBJECTS.Duck;
 import OBJECTS.MissedDucks;

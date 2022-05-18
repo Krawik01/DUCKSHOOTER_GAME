@@ -1,7 +1,5 @@
 package MENU;
-import GAME.Game;
 import GAME.GameModeFrame;
-import GAME.HighScore;
 
 import javax.swing.*;
 import java.awt.*;

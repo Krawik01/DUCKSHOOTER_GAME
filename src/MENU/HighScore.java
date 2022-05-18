@@ -1,4 +1,4 @@
-package GAME;
+package MENU;
 
 import javax.swing.*;
 

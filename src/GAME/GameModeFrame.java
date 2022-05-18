@@ -1,5 +1,7 @@
 package GAME;
 
+import MENU.Mode;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

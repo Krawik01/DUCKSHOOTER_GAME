@@ -1,5 +1,7 @@
 package GAME;
 
+import GAME.Threads.DucksComing;
+import GAME.Threads.HpIncrement;
 import OBJECTS.Gun;
 import OBJECTS.GunLevel;
 import OBJECTS.Points;
@@ -58,14 +60,11 @@ public class Game extends JFrame {
             }
         });
 
-
         DucksComing ducksComing = new DucksComing(panel,gun,mode);
         ducksComing.start();
 
-
-
-        Timer timer = new Timer(panel);
-        timer.start();
+        HpIncrement hpIncrement = new HpIncrement(panel);
+        hpIncrement.start();
 
 
         gun.addActionListener(new ActionListener() {

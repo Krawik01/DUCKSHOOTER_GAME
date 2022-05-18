@@ -1,17 +1,16 @@
-package GAME;
+package GAME.Threads;
 
-import OBJECTS.Duck;
 import OBJECTS.DucksHp;
 import OBJECTS.Points;
 
 import javax.swing.*;
 
 public class
-    Timer extends Thread implements Runnable {
+HpIncrement extends Thread implements Runnable {
     public static int secounds = 0;
     ImageIcon icon = new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\out\\production\\DUCKSHOOTER\\RESOURCES\\GameBackGround.jpg");
     JPanel panel;
-    Timer(JPanel panel){
+    public HpIncrement(JPanel panel){
         this.panel = panel;
     }
     public void run() {

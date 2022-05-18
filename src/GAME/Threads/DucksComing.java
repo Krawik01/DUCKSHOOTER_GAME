@@ -1,5 +1,6 @@
-package GAME;
+package GAME.Threads;
 
+import MENU.Mode;
 import OBJECTS.*;
 
 import javax.swing.*;
