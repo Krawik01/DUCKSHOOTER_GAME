@@ -1,0 +1,42 @@
+package GAME;
+
+import OBJECTS.Duck;
+import OBJECTS.DucksHp;
+import OBJECTS.Points;
+
+import javax.swing.*;
+
+public class
+    Timer extends Thread implements Runnable {
+    public static int secounds = 0;
+    ImageIcon icon = new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\out\\production\\DUCKSHOOTER\\RESOURCES\\GameBackGround.jpg");
+    JPanel panel;
+    Timer(JPanel panel){
+        this.panel = panel;
+    }
+    public void run() {
+
+        while (true) {
+            try {
+                this.sleep(5000);
+                // notify();
+            } catch (InterruptedException exc) {
+                System.out.println("Timer has been stoped.");
+                return;
+            }
+
+        if(Points.getValue() <= 80){
+            DucksHp.incrementRedDuckHp(1);
+            System.out.println("red duck hp incremented");
+        }
+        if((Points.getValue() > 80)&&(Points.getValue() <= 200)){
+            DucksHp.incrementPurpleDuckHp(1);
+            System.out.println("purple duck hp incremented");
+
+        }
+
+
+
+        }
+    }
+}
