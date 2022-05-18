@@ -97,6 +97,9 @@ public class DucksComing extends Thread {
        panel.add(pointsL);
 
 
+
+       //LOL
+
        if(Objects.equals(from,"left")) {
            if (Objects.equals(type, "yellow")) {
                duck.setBackground(Color.YELLOW);
