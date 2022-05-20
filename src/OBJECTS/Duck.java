@@ -25,6 +25,7 @@ public class Duck extends JButton {
 
     }
     public void loc(JButton button,JPanel panel,int x, int y,String from){
+        setBorder(BorderFactory.createEmptyBorder());
         button.setLocation(x,y);
         setSize(70,70);
 

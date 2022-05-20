@@ -22,17 +22,16 @@ public class ShouldGameStopCheck extends Thread{
                 interrupt();
 
             }
-            if(MissedDucks.getValue() >= 10){
-                frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
-                        String nick = JOptionPane.showInputDialog(null,
-                "Your nickname: ",
-                "Enter your nickname",
-                JOptionPane.PLAIN_MESSAGE);
-                System.out.println(nick);
-                frame.dispose();
+//            if(MissedDucks.getValue() >= 10){
+//                frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+//                        String nick = JOptionPane.showInputDialog(null,
+//                "Your nickname: ",
+//                "Enter your nickname",
+//                JOptionPane.PLAIN_MESSAGE);
+             //   System.out.println(nick);
+              //  frame.dispose();
                 //endgame wyniki
             }
         }
     }
 
-}

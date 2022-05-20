@@ -1,5 +1,6 @@
 package GAME.Threads;
 
+import OBJECTS.MissedDucks;
 import OBJECTS.Points;
 
 import javax.swing.*;
@@ -13,6 +14,7 @@ public class TimerInGame extends Thread{
     JPanel panel;
     JLabel timerLabel;
     JLabel pointsLabel;
+    JLabel missedDucksLabel;
 
     Font fnt0 = new Font("Agency FB", Font.BOLD, 50);
 
@@ -37,6 +39,12 @@ public class TimerInGame extends Thread{
         pointsLabel.setHorizontalAlignment(JLabel.CENTER);
         pointsLabel.setFont(fnt0);
         panel.add(pointsLabel);
+
+        missedDucksLabel = new JLabel();
+        missedDucksLabel.setBounds(2,150,200,100);
+        missedDucksLabel.setHorizontalAlignment(JLabel.CENTER);
+        missedDucksLabel.setFont(fnt0);
+        panel.add(missedDucksLabel);
 
         while (!isInterrupted()) {
 
@@ -69,7 +77,10 @@ public class TimerInGame extends Thread{
 
             timeInGameSecounds++;
 
-            pointsLabel.setText("" + Points.getValue());
+            pointsLabel.setText("Points: " + Points.getValue());
+
+            missedDucksLabel.setText("Missed: " + MissedDucks.getValue());
+
 
 
         }

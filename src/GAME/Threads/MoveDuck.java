@@ -4,9 +4,8 @@ import OBJECTS.Duck;
 import OBJECTS.MissedDucks;
 
 import javax.swing.*;
-import java.util.Objects;
 
-public class Move extends Thread {
+public class MoveDuck extends Thread {
     Duck duck;
     public JButton button;
     public JPanel panel;
@@ -15,7 +14,7 @@ public class Move extends Thread {
     int mode;
 
 
-    Move(Duck duck, JButton button, JPanel panel, int starty, String from,int mode) {
+    MoveDuck(Duck duck, JButton button, JPanel panel, int starty, String from, int mode) {
         this.duck = duck;
         this.starty = starty;
         this.button = button;

@@ -140,7 +140,7 @@ public class DucksComing extends Thread implements Mode {
        }
 
 
-        Move move = new Move(duck, duck, panel, start, from,mode);
+        MoveDuck moveDuck = new MoveDuck(duck, duck, panel, start, from,mode);
 
         final int[] clicks = {0};
 
@@ -152,7 +152,7 @@ public class DucksComing extends Thread implements Mode {
                 if(Objects.equals(type, "yellow")){
                     duck.setVisible(false);
                     panel.remove(duck);
-                    move.interrupt();
+                    moveDuck.interrupt();
                     Points.increment(1);
                     System.out.println(Points.getValue());
                    // Points.setScoresCounter(pointsL,panel,Points.getValue());
@@ -164,7 +164,7 @@ public class DucksComing extends Thread implements Mode {
                     if (clicks[0] >= DucksHp.redDuckHpGetValue()/GunLevel.getValue()) {
                         duck.setVisible(false);
                         panel.remove(duck);
-                        move.interrupt();
+                        moveDuck.interrupt();
                         Points.increment(5);
                         System.out.println(Points.getValue());
                         GunLevel.checkPoints(gun);
@@ -175,7 +175,7 @@ public class DucksComing extends Thread implements Mode {
                     if (clicks[0] >= DucksHp.purpleDuckHpGetValue()/GunLevel.getValue()) {
                         duck.setVisible(false);
                         panel.remove(duck);
-                        move.interrupt();
+                        moveDuck.interrupt();
                         Points.increment(10);
                         System.out.println(Points.getValue());
                         GunLevel.checkPoints(gun);
@@ -188,7 +188,7 @@ public class DucksComing extends Thread implements Mode {
                         System.out.println(20/GunLevel.getValue());
                         duck.setVisible(false);
                         panel.remove(duck);
-                        move.interrupt();
+                        moveDuck.interrupt();
                         Points.increment(20);
                         System.out.println(Points.getValue());
                         GunLevel.checkPoints(gun);
@@ -199,7 +199,7 @@ public class DucksComing extends Thread implements Mode {
             }
         });
 
-        move.start();
+        moveDuck.start();
 
     }
 

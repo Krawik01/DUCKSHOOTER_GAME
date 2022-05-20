@@ -1,9 +1,7 @@
 package GAME;
 
-import GAME.Threads.DucksComing;
-import GAME.Threads.HpIncrement;
-import GAME.Threads.ShouldGameStopCheck;
-import GAME.Threads.TimerInGame;
+import GAME.Threads.*;
+import OBJECTS.Cloud;
 import OBJECTS.Gun;
 import OBJECTS.GunLevel;
 import OBJECTS.Points;
@@ -25,6 +23,7 @@ public class Game extends JFrame {
 
 
     JPanel panel = new JPanel();
+    JPanel panel2 = new JPanel();
 //    JPanel panel2 = new JPanel(){
 //        public void paint (Graphics g){
 //            menuStartPaint(g);
@@ -45,12 +44,18 @@ public class Game extends JFrame {
         // setBackground();
 
 
-        //panel.setBackground(Color.BLUE);
+        panel.setBackground(Color.cyan);
 
         panel.setOpaque(true);
         panel.setLayout(null);
         TimerInGame timerInGame = new TimerInGame(panel);
         timerInGame.start();
+        Cloud cloud = new Cloud(panel);
+        cloud.setIcon(new ImageIcon("RESOURCES\\cloud.jpg"));
+
+
+        MoveClouds moveClouds = new MoveClouds(cloud,panel);
+        moveClouds.start();
 
 
         Gun gun = new Gun(panel, 1);
@@ -64,11 +69,9 @@ public class Game extends JFrame {
             gun.setEnabled(false);
         });
 
-
-
-
         DucksComing ducksComing = new DucksComing(panel, gun, mode);
         ducksComing.start();
+
 
         HpIncrement hpIncrement = new HpIncrement(panel);
         hpIncrement.start();
@@ -81,14 +84,17 @@ public class Game extends JFrame {
             System.out.println(GunLevel.getValue());
         });
         Font fnt0 = new Font("Agency FB", Font.BOLD, 50);
-        setBackGround();
+
         this.add(panel);
+       // setBackGround();
 
         this.setSize(1940, 1080);
         this.setResizable(false);
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.setVisible(true);
+
 
     }
 
@@ -98,6 +104,8 @@ public class Game extends JFrame {
         JLabel backGround = new JLabel("", icon, JLabel.CENTER);
 
         panel.add(backGround);
+        //zeby dzialalo to setLayout nie moze byc null
+
     }
 }
 

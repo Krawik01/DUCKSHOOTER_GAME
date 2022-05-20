@@ -39,12 +39,15 @@ public class Menu extends JFrame {
         setNewGameButton(buttonFont);
         setHighScoresButton(buttonFont);
         setExitButton(buttonFont);
-
+        panel.updateUI();//aktualizuje obraz
         frame.add(panel);
         frame.setSize(800,600);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
+
+
         setBackGround();
 
 
