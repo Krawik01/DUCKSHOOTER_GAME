@@ -33,9 +33,8 @@ public class Move extends Thread {
                 this.sleep(7);
             } catch (InterruptedException exc) {
                 interrupt();
-              //  break;
+                //  break;
             }
-
 
 
             if (from.equals("left")) {
@@ -59,6 +58,7 @@ public class Move extends Thread {
                     MissedDucks.increment();
                     System.out.println("Missed ducks right:" + MissedDucks.getValue());
                     System.out.println("removed");
+
                     interrupt();
                     break;
                 } else {
@@ -68,6 +68,7 @@ public class Move extends Thread {
         }
 
     }
+
 }
 
 

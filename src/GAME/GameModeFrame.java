@@ -56,6 +56,7 @@ public class GameModeFrame extends JFrame implements Mode {
                 SwingUtilities.invokeLater(() -> {
                     try {
                         new Game(setMode(1));
+
                     } catch (IOException ex) {
                         ex.printStackTrace();
                     }

@@ -25,15 +25,17 @@ public class DucksComing extends Thread implements Mode {
     public void run() {
 
         while (!isInterrupted()) {
-             levels(gun,panel,mode);
+             levels(gun,panel,mode,2000);//stages 1-5
+
         }
 
     }
 
-    public static void levels(Gun gun, JPanel panel,int mode){
+    public void levels(Gun gun, JPanel panel, int mode, int millis){
 
         String r = "right";
         String l = "left";
+
 
         //stage 1
         if(Points.getValue() <= 80) {
@@ -43,40 +45,42 @@ public class DucksComing extends Thread implements Mode {
             addMovingduck(780,"yellow",gun,panel,l,mode);
 
 
-            wait(2000);
+            wait(millis);
 
             addMovingduck(620,"red",gun,panel,l,mode);
             addMovingduck(850,"yellow",gun,panel,r,mode);
 
 
-            wait(4000);
+            wait(millis);
 
             addMovingduck(460,"yellow",gun,panel,r,mode);
             addMovingduck(940,"red",gun,panel,l,mode);
             addMovingduck(700,"yellow",gun,panel,r,mode);
 
-            wait(3000);
+            wait(millis);
 
             }
         //stage 2
         if((Points.getValue() > 80)&&(Points.getValue() <= 200)){
-            addMovingduck(460,"red",gun,panel,r,mode);
             addMovingduck(860,"purple",gun,panel,l,mode);
             addMovingduck(620,"yellow",gun,panel,r,mode);
 
-            wait(3000);
+            wait(millis);
 
             addMovingduck(940,"red",gun,panel,r,mode);
             addMovingduck(700,"purple",gun,panel,l,mode);
 
-            wait(4000);
+            wait(millis);
 
             addMovingduck(540,"yellow",gun,panel,l,mode);
             addMovingduck(860,"pink",gun,panel,r,mode);
 
-            wait(3000);
+            wait(millis);
         }
+        if((Points.getValue() > 200)&&(Points.getValue() < 350)) {
 
+
+        }
     }
 
     public static void wait(int millis){
@@ -102,36 +106,36 @@ public class DucksComing extends Thread implements Mode {
        if(Objects.equals(from,"left")) {
            if (Objects.equals(type, "yellow")) {
                duck.setBackground(Color.YELLOW);
-               duck.setIcon(new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\src\\RESOURCES\\YellowDuckR.png"));
+               duck.setIcon(new ImageIcon("RESOURCES\\YellowDuckR.png"));
            }
            if (Objects.equals(type, "red")) {
                duck.setBackground(Color.red);
-               duck.setIcon(new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\src\\RESOURCES\\RedDuckR.png"));
+               duck.setIcon(new ImageIcon("RESOURCES\\RedDuckR.png"));
            }
            if (Objects.equals(type, "purple")) {
                duck.setBackground(Color.blue);
-               duck.setIcon(new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\src\\RESOURCES\\PurpleDuckR.png"));
+               duck.setIcon(new ImageIcon("RESOURCES\\PurpleDuckR.png"));
            }
            if (Objects.equals(type, "pink")) {
                duck.setBackground(Color.pink);
-               duck.setIcon(new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\src\\RESOURCES\\PinkDuckR.png"));
+               duck.setIcon(new ImageIcon("RESOURCES\\PinkDuckR.png"));
            }
        } else {
            if (Objects.equals(type, "yellow")) {
                duck.setBackground(Color.YELLOW);
-               duck.setIcon(new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\src\\RESOURCES\\YellowDuckL.png"));
+               duck.setIcon(new ImageIcon("RESOURCES\\YellowDuckL.png"));
            }
            if (Objects.equals(type, "red")) {
                duck.setBackground(Color.red);
-               duck.setIcon(new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\src\\RESOURCES\\RedDuckL.png"));
+               duck.setIcon(new ImageIcon("RESOURCES\\RedDuckL.png"));
            }
            if (Objects.equals(type, "purple")) {
                duck.setBackground(Color.blue);
-               duck.setIcon(new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\src\\RESOURCES\\PurpleDuckL.png"));
+               duck.setIcon(new ImageIcon("RESOURCES\\PurpleDuckL.png"));
            }
            if (Objects.equals(type, "pink")) {
                duck.setBackground(Color.pink);
-               duck.setIcon(new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\src\\RESOURCES\\PinkDuckL.png"));
+               duck.setIcon(new ImageIcon("RESOURCES\\PinkDuckL.png"));
            }
        }
 

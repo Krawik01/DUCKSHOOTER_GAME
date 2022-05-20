@@ -1,6 +1,7 @@
 package GAME.Threads;
 
 import OBJECTS.DucksHp;
+import OBJECTS.MissedDucks;
 import OBJECTS.Points;
 
 import javax.swing.*;
@@ -24,6 +25,8 @@ HpIncrement extends Thread implements Runnable {
                 return;
             }
 
+
+
         if(Points.getValue() <= 80){
             DucksHp.incrementRedDuckHp(1);
             System.out.println("red duck hp incremented");
@@ -32,10 +35,12 @@ HpIncrement extends Thread implements Runnable {
             DucksHp.incrementPurpleDuckHp(1);
             System.out.println("purple duck hp incremented");
 
+
         }
 
 
 
         }
     }
+
 }

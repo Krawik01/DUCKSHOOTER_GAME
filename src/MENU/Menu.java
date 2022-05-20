@@ -83,10 +83,9 @@ public class Menu extends JFrame {
     }
 
     public void setBackGround(){
-        ImageIcon icon = new ImageIcon("C:\\Users\\SZEF\\Desktop\\DUCKSHOOTER\\src\\RESOURCES\\BACKGROUND.jpg",
+        ImageIcon icon = new ImageIcon("RESOURCES\\BACKGROUND.jpg",
                 "");
         JLabel backGround= new JLabel("", icon, JLabel.CENTER);
-
         frame.add(backGround);
     }
 
@@ -96,10 +95,6 @@ public class Menu extends JFrame {
         g.setFont(fnt0);
         g.setColor(Color.BLACK);
         g.drawString("DUCK SHOOTER GAME",215,100);
-
-    }
-
-    public static void main(String[] args) {
 
     }
 
