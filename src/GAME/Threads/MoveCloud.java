@@ -21,7 +21,7 @@ public class MoveCloud extends Thread {
 
     @Override
     public void run() {
-
+        setCloudWithOutBackground();
         int speed = 3;
         while (!ShouldGameStopCheck.end) {
             try {
@@ -41,5 +41,10 @@ public class MoveCloud extends Thread {
             cloud.loc(cloud, panel, cloud.getX() + speed, startY);
             panel.updateUI();
         }
+    }
+    public void setCloudWithOutBackground(){
+        cloud.setOpaque(false);
+        cloud.setContentAreaFilled(false);
+        cloud.setBorderPainted(false);
     }
 }

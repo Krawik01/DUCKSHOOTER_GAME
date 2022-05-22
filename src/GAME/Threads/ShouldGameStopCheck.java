@@ -40,9 +40,8 @@ public class ShouldGameStopCheck extends Thread {
                 interrupt();
 
             }
-            if (MissedDucks.getValue() > 10) {
+            if (MissedDucks.getValue() > 9) {
                 end();
-
                 //gameOverLabel.setVisible(true);
                 gameOverLabel.setText("GAME OVER");
                 //frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));

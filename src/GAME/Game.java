@@ -51,7 +51,7 @@ public class Game extends JFrame {
         Frog frog = new Frog(panel);
         frog.setIcon(new ImageIcon("RESOURCES\\frog.png"));
         Cloud cloud = new Cloud(panel);
-        cloud.setIcon(new ImageIcon("RESOURCES\\cloud.jpg"));
+        cloud.setIcon(new ImageIcon("RESOURCES\\cloud.png"));
 
         MoveFrog moveFrog = new MoveFrog(frog, panel, mode, 670);
         MoveCloud moveCloud = new MoveCloud(cloud,panel,mode,410);
