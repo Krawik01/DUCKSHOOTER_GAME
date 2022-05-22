@@ -11,7 +11,7 @@ public class HighScore extends JFrame {
 
         frameG.setSize(800, 800);
         frameG.setResizable(false);
-        frameG.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frameG.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frameG.setVisible(true);
 
 

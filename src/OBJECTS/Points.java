@@ -10,7 +10,7 @@ public class Points {
         value = value + x;
     }
 
-    void reset() {
+    public static void reset() {
         value = 0;
     }
 

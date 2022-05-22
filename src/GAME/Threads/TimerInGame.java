@@ -8,13 +8,14 @@ import java.awt.*;
 
 public class TimerInGame extends Thread{
 
-    int timeInGameSecounds;
-    int timeInGameMinutes;
+    public static int timeInGameSecounds;
+    public static int timeInGameMinutes;
     
     JPanel panel;
     JLabel timerLabel;
     JLabel pointsLabel;
     JLabel missedDucksLabel;
+
 
     Font fnt0 = new Font("Agency FB", Font.BOLD, 50);
 

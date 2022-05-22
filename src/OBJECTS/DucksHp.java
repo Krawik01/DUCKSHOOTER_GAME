@@ -5,7 +5,12 @@ public class DucksHp {
     private static int RedDuckHp = 4;
     private static int PurpleDuckHp = 10;
     private static int PinkDuckHp = 20;
-
+    public static void ducksHpReset(){
+        YellowDuckHp = 0;
+        RedDuckHp = 0;
+        PurpleDuckHp = 0;
+        PinkDuckHp = 0;
+    }
     public static void incrementYellowDuckHp(int x) {
         YellowDuckHp = YellowDuckHp + x;
     }

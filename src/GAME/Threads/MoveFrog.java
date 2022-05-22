@@ -1,24 +1,28 @@
 package GAME.Threads;
 
-import OBJECTS.Cloud;
+import OBJECTS.Frog;
 
 import javax.swing.*;
 
-public class MoveClouds extends Thread {
+public class MoveFrog extends Thread {
 
-    Cloud cloud;
+    Frog cloud;
     JPanel panel;
+    int mode;
+    int startY;
 
-    public MoveClouds(Cloud cloud, JPanel panel) {
+    public MoveFrog(Frog cloud, JPanel panel, int mode, int startY) {
         this.cloud = cloud;
         this.panel = panel;
+        this.mode = mode;
+        this.startY = startY;
     }
 
     @Override
     public void run() {
 
         int speed = 3;
-        while (!isInterrupted()) {
+        while (!ShouldGameStopCheck.end) {
             try {
                 this.sleep(3);
             } catch (InterruptedException exc) {
@@ -27,12 +31,14 @@ public class MoveClouds extends Thread {
             }
 
             if(cloud.getX() == 1920){
-                speed = -3;
+                speed = -mode;
             }
             if(cloud.getX() == 0) {
-                speed = 3;
+                speed = mode;
             }
-            cloud.loc(cloud, panel, cloud.getX() + speed, 700);
+            panel.updateUI();
+            cloud.loc(cloud, panel, cloud.getX() + speed, startY);
+            panel.updateUI();
         }
     }
 }

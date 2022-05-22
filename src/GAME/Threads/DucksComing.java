@@ -24,64 +24,79 @@ public class DucksComing extends Thread implements Mode {
 
     public void run() {
 
-        while (!isInterrupted()) {
+        while (!ShouldGameStopCheck.end) {
              levels(gun,panel,mode,2000);//stages 1-5
 
         }
 
     }
 
-    public void levels(Gun gun, JPanel panel, int mode, int millis){
+    public void levels(Gun gun, JPanel panel, int mode, int millis) {
 
         String r = "right";
         String l = "left";
 
 
         //stage 1
-        if(Points.getValue() <= 80) {
+        if (Points.getValue() <= 80) {
 
-            addMovingduck(540,"yellow",gun,panel,r,mode);
-            addMovingduck(700,"red",gun,panel,l,mode);
-            addMovingduck(780,"yellow",gun,panel,l,mode);
-
+            addMovingduck(800, "yellow", gun, panel, l, mode);
+            addMovingduck(670, "yellow", gun, panel, r, mode);
 
             wait(millis);
 
-            addMovingduck(620,"red",gun,panel,l,mode);
-            addMovingduck(850,"yellow",gun,panel,r,mode);
+            addMovingduck(410, "red", gun, panel, r, mode);
+            addMovingduck(540, "yellow", gun, panel, l, mode);
 
+            wait(millis);
+            addMovingduck(410, "yellow", gun, panel, r, mode);
+            addMovingduck(540, "red", gun, panel, l, mode);
+            addMovingduck(670, "yellow", gun, panel, r, mode);
 
             wait(millis);
 
-            addMovingduck(460,"yellow",gun,panel,r,mode);
-            addMovingduck(940,"red",gun,panel,l,mode);
-            addMovingduck(700,"yellow",gun,panel,r,mode);
-
-            wait(millis);
-
-            }
+        }
         //stage 2
-        if((Points.getValue() > 80)&&(Points.getValue() <= 200)){
-            addMovingduck(860,"purple",gun,panel,l,mode);
-            addMovingduck(620,"yellow",gun,panel,r,mode);
+        if ((Points.getValue() > 80) && (Points.getValue() <= 200)) {
+
+            addMovingduck(410, "purple", gun, panel, r, mode);
+            addMovingduck(670, "yellow", gun, panel, r, mode);
 
             wait(millis);
 
-            addMovingduck(940,"red",gun,panel,r,mode);
-            addMovingduck(700,"purple",gun,panel,l,mode);
+            addMovingduck(540, "red", gun, panel, r, mode);
+            addMovingduck(670, "purple", gun, panel, l, mode);
 
             wait(millis);
 
-            addMovingduck(540,"yellow",gun,panel,l,mode);
-            addMovingduck(860,"pink",gun,panel,r,mode);
+            addMovingduck(800, "pink", gun, panel, r, mode);
 
             wait(millis);
         }
-        if((Points.getValue() > 200)&&(Points.getValue() < 350)) {
+        //stage 3
+        if ((Points.getValue() > 200) && (Points.getValue() < 350)) {
 
+            addMovingduck(410, "purple", gun, panel, r, mode);
+            addMovingduck(540, "red", gun, panel, l, mode);
+            addMovingduck(800, "yellow", gun, panel, l, mode);
+
+            wait(millis);
+
+            addMovingduck(800, "pink", gun, panel, l, mode);
+
+            wait(millis);
+
+            addMovingduck(410, "yellow", gun, panel, r, mode);
+            addMovingduck(540, "red", gun, panel, l, mode);
+            wait(millis);
+        } //stage 3
+        if ((Points.getValue() > 350) && (Points.getValue() < 700)) {
+            addMovingduck(410, "pink", gun, panel, r, mode);
+            addMovingduck(800, "yellow", gun, panel, l, mode);
 
         }
     }
+
 
     public static void wait(int millis){
         try {
@@ -140,7 +155,8 @@ public class DucksComing extends Thread implements Mode {
        }
 
 
-        MoveDuck moveDuck = new MoveDuck(duck, duck, panel, start, from,mode);
+
+        MoveDuck moveDuck = new MoveDuck(duck, duck, panel, start, from, mode);
 
         final int[] clicks = {0};
 
@@ -154,7 +170,6 @@ public class DucksComing extends Thread implements Mode {
                     panel.remove(duck);
                     moveDuck.interrupt();
                     Points.increment(1);
-                    System.out.println(Points.getValue());
                    // Points.setScoresCounter(pointsL,panel,Points.getValue());
                     GunLevel.checkPoints(gun);
 
@@ -166,7 +181,6 @@ public class DucksComing extends Thread implements Mode {
                         panel.remove(duck);
                         moveDuck.interrupt();
                         Points.increment(5);
-                        System.out.println(Points.getValue());
                         GunLevel.checkPoints(gun);
                        // Points.setScoresCounter(pointsL, panel,Points.getValue());
                     }
@@ -177,7 +191,6 @@ public class DucksComing extends Thread implements Mode {
                         panel.remove(duck);
                         moveDuck.interrupt();
                         Points.increment(10);
-                        System.out.println(Points.getValue());
                         GunLevel.checkPoints(gun);
                     //    Points.setScoresCounter(pointsL, panel,Points.getValue());
 
@@ -185,12 +198,10 @@ public class DucksComing extends Thread implements Mode {
                 }
                 if(Objects.equals(type, "pink")) {
                     if (clicks[0] >= DucksHp.pinkDuckHpGetValue()/GunLevel.getValue()) {
-                        System.out.println(20/GunLevel.getValue());
                         duck.setVisible(false);
                         panel.remove(duck);
                         moveDuck.interrupt();
                         Points.increment(20);
-                        System.out.println(Points.getValue());
                         GunLevel.checkPoints(gun);
                       //  Points.setScoresCounter(pointsL, panel,Points.getValue());
 

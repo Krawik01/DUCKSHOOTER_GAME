@@ -9,7 +9,7 @@ public class MissedDucks {
         value ++;
     }
 
-    void reset() {
+    public static void reset() {
         value = 0;
     }
 

@@ -1,5 +1,6 @@
 package MENU;
 import GAME.GameModeFrame;
+import GAME.Threads.ShouldGameStopCheck;
 
 import javax.swing.*;
 import java.awt.*;
@@ -59,6 +60,9 @@ public class Menu extends JFrame {
         newGame.setPreferredSize(new Dimension(400,55));
         newGame.setFont(buttonFont);
         newGame.setBackground(Color.yellow);
+        if(ShouldGameStopCheck.end){
+            newGame.setEnabled(false);
+        }
 
         newGame.addActionListener(new ActionListener() {
             @Override
@@ -83,6 +87,13 @@ public class Menu extends JFrame {
         panel.add(exit);
         exit.setPreferredSize(new Dimension(400,55));
         exit.setFont(buttonFont);
+
+        exit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(1);
+            }
+        });
     }
 
     public void setBackGround(){

@@ -2,14 +2,12 @@ package GAME;
 
 import GAME.Threads.*;
 import OBJECTS.Cloud;
+import OBJECTS.Frog;
 import OBJECTS.Gun;
 import OBJECTS.GunLevel;
-import OBJECTS.Points;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,12 +48,21 @@ public class Game extends JFrame {
         panel.setLayout(null);
         TimerInGame timerInGame = new TimerInGame(panel);
         timerInGame.start();
+        Frog frog = new Frog(panel);
+        frog.setIcon(new ImageIcon("RESOURCES\\frog.png"));
         Cloud cloud = new Cloud(panel);
         cloud.setIcon(new ImageIcon("RESOURCES\\cloud.jpg"));
 
+        if((mode == 1)||(mode == 2)) {
+            MoveFrog moveFrog = new MoveFrog(frog, panel, mode,650);
+            moveFrog.start();
 
-        MoveClouds moveClouds = new MoveClouds(cloud,panel);
-        moveClouds.start();
+        } else {
+            MoveFrog moveFrog = new MoveFrog(frog, panel, mode, 670);
+            MoveCloud moveCloud = new MoveCloud(cloud,panel,mode,410);
+            moveFrog.start();
+            moveCloud.start();
+        }
 
 
         Gun gun = new Gun(panel, 1);
@@ -64,9 +71,13 @@ public class Game extends JFrame {
         gun.setIcon(gunIcon1);
 
         gun.setEnabled(false);
+
         gun.addActionListener(e -> {
+            GunLevel.increment();
+            System.out.println(GunLevel.getValue());
             gun.setIcon(GunLevel.gunSetIcon());
             gun.setEnabled(false);
+
         });
 
         DucksComing ducksComing = new DucksComing(panel, gun, mode);
@@ -76,23 +87,19 @@ public class Game extends JFrame {
         HpIncrement hpIncrement = new HpIncrement(panel);
         hpIncrement.start();
 
-        ShouldGameStopCheck shouldGameStopCheck = new ShouldGameStopCheck(frameG);
+        ShouldGameStopCheck shouldGameStopCheck = new ShouldGameStopCheck(frameG,panel);
         shouldGameStopCheck.start();
 
-        gun.addActionListener(e -> {
-            GunLevel.increment();
-            System.out.println(GunLevel.getValue());
-        });
+
         Font fnt0 = new Font("Agency FB", Font.BOLD, 50);
 
         this.add(panel);
        // setBackGround();
 
-        this.setSize(1940, 1080);
+        this.setSize(1940, 1030);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        this.setDefaultCloseOperation(frameG.HIDE_ON_CLOSE);
         this.setVisible(true);
 
 

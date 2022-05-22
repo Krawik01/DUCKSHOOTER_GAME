@@ -26,9 +26,9 @@ public class GameModeFrame extends JFrame implements Mode {
 
         panel.setBorder(BorderFactory.createEmptyBorder(270, 10, 600, 3));
         Font buttonFont = new Font("Agency FB", Font.BOLD, 40);
-        setEasyButoon(buttonFont);
-        setMediumButton(buttonFont);
-        setHardButton(buttonFont);
+        setEasyButoon(buttonFont,frame);
+        setMediumButton(buttonFont,frame);
+        setHardButton(buttonFont,frame);
 
         frame.add(panel);
         frame.setSize(800,600);
@@ -46,7 +46,7 @@ public class GameModeFrame extends JFrame implements Mode {
 
     }
 
-    public void setEasyButoon(Font buttonFont){
+    public void setEasyButoon(Font buttonFont, JFrame frame){
         panel.add(easy);
         easy.setPreferredSize(new Dimension(400,55));
         easy.setFont(buttonFont);
@@ -62,11 +62,12 @@ public class GameModeFrame extends JFrame implements Mode {
                         ex.printStackTrace();
                     }
                 });
+                frame.dispose();
             }
         });
 
     }
-    public void setMediumButton(Font buttonFont){
+    public void setMediumButton(Font buttonFont, JFrame frame){
         panel.add(medium);
         medium.setPreferredSize(new Dimension(400,55));
         medium.setFont(buttonFont);
@@ -82,11 +83,12 @@ public class GameModeFrame extends JFrame implements Mode {
                         ex.printStackTrace();
                     }
                 });
+                frame.dispose();
             }
         });
 
     }
-    public void setHardButton(Font buttonFont){
+    public void setHardButton(Font buttonFont, JFrame frame){
         panel.add(hard);
         hard.setPreferredSize(new Dimension(400,55));
         hard.setFont(buttonFont);
@@ -101,6 +103,7 @@ public class GameModeFrame extends JFrame implements Mode {
                         ex.printStackTrace();
                     }
                 });
+                frame.dispose();
             }
         });
     }

@@ -16,7 +16,7 @@ HpIncrement extends Thread implements Runnable {
     }
     public void run() {
 
-        while (true) {
+        while (!ShouldGameStopCheck.end) {
             try {
                 this.sleep(5000);
                 // notify();
@@ -29,12 +29,9 @@ HpIncrement extends Thread implements Runnable {
 
         if(Points.getValue() <= 80){
             DucksHp.incrementRedDuckHp(1);
-            System.out.println("red duck hp incremented");
         }
         if((Points.getValue() > 80)&&(Points.getValue() <= 200)){
             DucksHp.incrementPurpleDuckHp(1);
-            System.out.println("purple duck hp incremented");
-
 
         }
 
