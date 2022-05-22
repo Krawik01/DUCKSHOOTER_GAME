@@ -91,10 +91,28 @@ public class DucksComing extends Thread implements Mode {
             wait(millis);
         } //stage 3
         if ((Points.getValue() > 350) && (Points.getValue() < 700)) {
+            addMovingduck(670, "red", gun, panel, r, mode);
+            addMovingduck(800, "yellow", gun, panel, l, mode);
+
+            wait(millis);
             addMovingduck(410, "pink", gun, panel, r, mode);
+            addMovingduck(540, "purple", gun, panel, l, mode);
+
+            wait(millis);
+
             addMovingduck(800, "yellow", gun, panel, l, mode);
 
         }
+//        } else {
+//            addMovingduck(670, "red", gun, panel, r, mode);
+//            addMovingduck(410, "pink", gun, panel, r, mode);
+//            addMovingduck(800, "purple", gun, panel, l, mode);
+//
+//            wait(millis);
+//
+//            addMovingduck(540, "red", gun, panel, l, mode);
+//            addMovingduck(410, "yellow", gun, panel, r, mode);
+//        }
     }
 
 

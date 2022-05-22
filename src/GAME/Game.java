@@ -53,16 +53,11 @@ public class Game extends JFrame {
         Cloud cloud = new Cloud(panel);
         cloud.setIcon(new ImageIcon("RESOURCES\\cloud.jpg"));
 
-        if((mode == 1)||(mode == 2)) {
-            MoveFrog moveFrog = new MoveFrog(frog, panel, mode,650);
-            moveFrog.start();
+        MoveFrog moveFrog = new MoveFrog(frog, panel, mode, 670);
+        MoveCloud moveCloud = new MoveCloud(cloud,panel,mode,410);
+        moveFrog.start();
+        moveCloud.start();
 
-        } else {
-            MoveFrog moveFrog = new MoveFrog(frog, panel, mode, 670);
-            MoveCloud moveCloud = new MoveCloud(cloud,panel,mode,410);
-            moveFrog.start();
-            moveCloud.start();
-        }
 
 
         Gun gun = new Gun(panel, 1);

@@ -30,7 +30,7 @@ public class MoveFrog extends Thread {
                 //  break;
             }
 
-            if(cloud.getX() == 1920){
+            if(cloud.getX() == 1810){
                 speed = -mode;
             }
             if(cloud.getX() == 0) {

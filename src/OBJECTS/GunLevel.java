@@ -33,12 +33,12 @@ public class GunLevel {
         if ((value == 2) && (Points.getValue() > 160)) {
             gun.setEnabled(true);
         }
-//        if((value == 3)&&(Points.getValue()> 15)){
-//            gun.setEnabled(true);
-//        }
-//        if((value == 4)&&(Points.getValue()> 15)){
-//            gun.setEnabled(true);
-//        }
+        if((value == 3)&&(Points.getValue()> 250)){
+            gun.setEnabled(true);
+        }
+        if((value == 4)&&(Points.getValue()> 450)){
+            gun.setEnabled(true);
+        }
 
     }
 

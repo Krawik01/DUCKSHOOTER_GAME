@@ -26,14 +26,25 @@ HpIncrement extends Thread implements Runnable {
             }
 
 
-
         if(Points.getValue() <= 80){
-            DucksHp.incrementRedDuckHp(1);
+            System.out.println("yellow duck hp incremented");
+            DucksHp.incrementYellowDuckHp(1);
         }
         if((Points.getValue() > 80)&&(Points.getValue() <= 200)){
-            DucksHp.incrementPurpleDuckHp(1);
+            System.out.println("red duck hp incremented");
+            DucksHp.incrementRedDuckHp(1);
 
         }
+        if((Points.getValue() > 200)&&(Points.getValue() <= 350)){
+            System.out.println("purple duck hp incremented");
+                DucksHp.incrementPurpleDuckHp(1);
+        }
+        else {
+            System.out.println("pink duck hp incremented");
+            DucksHp.incrementPinkDuckHp(1);
+        }
+
+
 
 
 
