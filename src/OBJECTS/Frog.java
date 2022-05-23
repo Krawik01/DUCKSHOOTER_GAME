@@ -2,7 +2,7 @@ package OBJECTS;
 
 import javax.swing.*;
 
-public class Frog extends obstacle {
+public class Frog extends Obstacle {
 
     public Frog(JPanel panel){
       panel.add(this);

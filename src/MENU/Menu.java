@@ -33,7 +33,6 @@ public class Menu extends JFrame {
 
         this.setLayout(null);
 
-
         panel.setBorder(BorderFactory.createEmptyBorder(270, 10, 600, 3));
         Font buttonFont = new Font("Agency FB", Font.BOLD, 40);
 
@@ -43,13 +42,15 @@ public class Menu extends JFrame {
         panel.updateUI();//aktualizuje obraz
         frame.add(panel);
         frame.setSize(800,600);
+
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
 
-
         setBackGround();
+        frame.repaint();
+        frame.revalidate();
 
 
     }

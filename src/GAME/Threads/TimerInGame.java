@@ -42,7 +42,7 @@ public class TimerInGame extends Thread{
         panel.add(pointsLabel);
 
         missedDucksLabel = new JLabel();
-        missedDucksLabel.setBounds(2,150,200,100);
+        missedDucksLabel.setBounds(5,150,250,100);
         missedDucksLabel.setHorizontalAlignment(JLabel.CENTER);
         missedDucksLabel.setFont(fnt0);
         panel.add(missedDucksLabel);
@@ -80,7 +80,7 @@ public class TimerInGame extends Thread{
 
             pointsLabel.setText("Points: " + Points.getValue());
 
-            missedDucksLabel.setText("Missed: " + MissedDucks.getValue());
+            missedDucksLabel.setText("Missed: " + MissedDucks.getValue() + "/10");
 
 
 

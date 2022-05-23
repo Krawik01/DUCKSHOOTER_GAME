@@ -2,7 +2,7 @@ package OBJECTS;
 
 import javax.swing.*;
 
-public class Cloud extends obstacle {
+public class Cloud extends Obstacle {
 
     public Cloud(JPanel panel){
         panel.add(this);

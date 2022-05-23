@@ -1,10 +1,7 @@
 package GAME;
 
 import GAME.Threads.*;
-import OBJECTS.Cloud;
-import OBJECTS.Frog;
-import OBJECTS.Gun;
-import OBJECTS.GunLevel;
+import OBJECTS.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -58,6 +55,13 @@ public class Game extends JFrame {
         moveFrog.start();
         moveCloud.start();
 
+        Tree tree = new Tree(panel);
+        tree.loc(tree,panel,1000,565);
+        Icon treeIcon = new ImageIcon("RESOURCES\\tree.png");
+        tree.setIcon(treeIcon);
+        tree.setOpaque(false);
+        tree.setContentAreaFilled(false);
+        tree.setBorderPainted(false);
 
 
         Gun gun = new Gun(panel, 1);
@@ -92,7 +96,7 @@ public class Game extends JFrame {
        // setBackGround();
 
         this.setSize(1940, 1030);
-        this.setResizable(false);
+        this.setResizable(true);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(frameG.HIDE_ON_CLOSE);
         this.setVisible(true);
