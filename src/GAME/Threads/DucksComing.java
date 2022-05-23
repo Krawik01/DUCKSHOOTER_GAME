@@ -126,51 +126,52 @@ public class DucksComing extends Thread implements Mode {
 
 
     public static void addMovingduck(int start, String type, Gun gun, JPanel panel,String from,int mode) {
-       Duck duck = new Duck(type,panel,from, start);
+        Duck duck = new Duck(type, panel, from, start);
+
+        duck.setOpaque(false);
+        duck.setContentAreaFilled(false);
+        duck.setBorderPainted(false);
+
+        pointsL.setPreferredSize(new Dimension(100, 100));
+        pointsL.setLocation(100, 100);
+        panel.add(pointsL);
 
 
-       pointsL.setPreferredSize(new Dimension(100,100));
-       pointsL.setLocation(100,100);
-       panel.add(pointsL);
-
-
-
-       if(Objects.equals(from,"left")) {
-           if (Objects.equals(type, "yellow")) {
-               duck.setBackground(Color.YELLOW);
-               duck.setIcon(new ImageIcon("RESOURCES\\YellowDuckR.png"));
-           }
-           if (Objects.equals(type, "red")) {
-               duck.setBackground(Color.red);
-               duck.setIcon(new ImageIcon("RESOURCES\\RedDuckR.png"));
-           }
-           if (Objects.equals(type, "purple")) {
-               duck.setBackground(Color.blue);
-               duck.setIcon(new ImageIcon("RESOURCES\\PurpleDuckR.png"));
-           }
-           if (Objects.equals(type, "pink")) {
-               duck.setBackground(Color.pink);
-               duck.setIcon(new ImageIcon("RESOURCES\\PinkDuckR.png"));
-           }
-       } else {
-           if (Objects.equals(type, "yellow")) {
-               duck.setBackground(Color.YELLOW);
-               duck.setIcon(new ImageIcon("RESOURCES\\YellowDuckL.png"));
-           }
-           if (Objects.equals(type, "red")) {
-               duck.setBackground(Color.red);
-               duck.setIcon(new ImageIcon("RESOURCES\\RedDuckL.png"));
-           }
-           if (Objects.equals(type, "purple")) {
-               duck.setBackground(Color.blue);
-               duck.setIcon(new ImageIcon("RESOURCES\\PurpleDuckL.png"));
-           }
-           if (Objects.equals(type, "pink")) {
-               duck.setBackground(Color.pink);
-               duck.setIcon(new ImageIcon("RESOURCES\\PinkDuckL.png"));
-           }
-       }
-
+        if (Objects.equals(from, "left")) {
+            if (Objects.equals(type, "yellow")) {
+                duck.setBackground(Color.YELLOW);
+                duck.setIcon(new ImageIcon("RESOURCES\\YellowDuckR.png"));
+            }
+            if (Objects.equals(type, "red")) {
+                duck.setBackground(Color.red);
+                duck.setIcon(new ImageIcon("RESOURCES\\RedDuckR.png"));
+            }
+            if (Objects.equals(type, "purple")) {
+                duck.setBackground(Color.blue);
+                duck.setIcon(new ImageIcon("RESOURCES\\PurpleDuckR.png"));
+            }
+            if (Objects.equals(type, "pink")) {
+                duck.setBackground(Color.pink);
+                duck.setIcon(new ImageIcon("RESOURCES\\PinkDuckR.png"));
+            }
+        } else {
+            if (Objects.equals(type, "yellow")) {
+                duck.setBackground(Color.YELLOW);
+                duck.setIcon(new ImageIcon("RESOURCES\\YellowDuckL.png"));
+            }
+            if (Objects.equals(type, "red")) {
+                duck.setBackground(Color.red);
+                duck.setIcon(new ImageIcon("RESOURCES\\RedDuckL.png"));
+            }
+            if (Objects.equals(type, "purple")) {
+                duck.setBackground(Color.blue);
+                duck.setIcon(new ImageIcon("RESOURCES\\PurpleDuckL.png"));
+            }
+            if (Objects.equals(type, "pink")) {
+                duck.setBackground(Color.pink);
+                duck.setIcon(new ImageIcon("RESOURCES\\PinkDuckL.png"));
+            }
+        }
 
 
         MoveDuck moveDuck = new MoveDuck(duck, duck, panel, start, from, mode);
@@ -182,45 +183,45 @@ public class DucksComing extends Thread implements Mode {
             public void actionPerformed(ActionEvent e) {
                 clicks[0]++;
 
-                if(Objects.equals(type, "yellow")){
+                if (Objects.equals(type, "yellow")) {
                     duck.setVisible(false);
                     panel.remove(duck);
                     moveDuck.interrupt();
                     Points.increment(1);
-                   // Points.setScoresCounter(pointsL,panel,Points.getValue());
+                    // Points.setScoresCounter(pointsL,panel,Points.getValue());
                     GunLevel.checkPoints(gun);
 
                 }
 
-                if(Objects.equals(type, "red")) {
-                    if (clicks[0] >= DucksHp.redDuckHpGetValue()/GunLevel.getValue()) {
+                if (Objects.equals(type, "red")) {
+                    if (clicks[0] >= DucksHp.redDuckHpGetValue() / GunLevel.getValue()) {
                         duck.setVisible(false);
                         panel.remove(duck);
                         moveDuck.interrupt();
                         Points.increment(5);
                         GunLevel.checkPoints(gun);
-                       // Points.setScoresCounter(pointsL, panel,Points.getValue());
+                        // Points.setScoresCounter(pointsL, panel,Points.getValue());
                     }
                 }
-                if(Objects.equals(type, "purple")) {
-                    if (clicks[0] >= DucksHp.purpleDuckHpGetValue()/GunLevel.getValue()) {
+                if (Objects.equals(type, "purple")) {
+                    if (clicks[0] >= DucksHp.purpleDuckHpGetValue() / GunLevel.getValue()) {
                         duck.setVisible(false);
                         panel.remove(duck);
                         moveDuck.interrupt();
                         Points.increment(10);
                         GunLevel.checkPoints(gun);
-                    //    Points.setScoresCounter(pointsL, panel,Points.getValue());
+                        //    Points.setScoresCounter(pointsL, panel,Points.getValue());
 
                     }
                 }
-                if(Objects.equals(type, "pink")) {
-                    if (clicks[0] >= DucksHp.pinkDuckHpGetValue()/GunLevel.getValue()) {
+                if (Objects.equals(type, "pink")) {
+                    if (clicks[0] >= DucksHp.pinkDuckHpGetValue() / GunLevel.getValue()) {
                         duck.setVisible(false);
                         panel.remove(duck);
                         moveDuck.interrupt();
                         Points.increment(20);
                         GunLevel.checkPoints(gun);
-                      //  Points.setScoresCounter(pointsL, panel,Points.getValue());
+                        //  Points.setScoresCounter(pointsL, panel,Points.getValue());
 
                     }
                 }
@@ -230,5 +231,6 @@ public class DucksComing extends Thread implements Mode {
         moveDuck.start();
 
     }
+
 
 }

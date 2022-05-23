@@ -20,7 +20,7 @@ public class MoveFrog extends Thread {
 
     @Override
     public void run() {
-
+        setFrogWithOtBackground();
         int speed = 3;
         while (!ShouldGameStopCheck.end) {
             try {
@@ -40,5 +40,10 @@ public class MoveFrog extends Thread {
             cloud.loc(cloud, panel, cloud.getX() + speed, startY);
             panel.updateUI();
         }
+    }
+    public void setFrogWithOtBackground(){
+        cloud.setOpaque(false);
+        cloud.setContentAreaFilled(false);
+        cloud.setBorderPainted(false);
     }
 }
