@@ -1,6 +1,9 @@
 package GAME;
 
+import GAME.Threads.ShouldGameStopCheck;
+import GAME.Threads.TimerInGame;
 import MENU.Mode;
+import OBJECTS.MissedDucks;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,11 +13,17 @@ import java.io.IOException;
 
 public class GameModeFrame extends JFrame implements Mode {
 
-    JPanel panel = new JPanel(){
-        public void paint (Graphics g){
-            GameModeStartPaint(g);
+    JPanel panel = new JPanel() {
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            ImageIcon imageIcon = new ImageIcon("RESOURCES\\BACKGROUND.jpg");
+            g.drawImage(imageIcon.getImage(), 0,0,this);
+            g.drawImage(imageIcon.getImage(), 0, 0, this);
+            g.drawImage(imageIcon.getImage(), 0, 0, this);
+            g.drawImage(imageIcon.getImage(), 0, 0, this);
         }
     };
+
     JFrame frame = new JFrame("DUCK SHOOTER");
 
     JButton easy = new JButton("Easy");
@@ -56,6 +65,9 @@ public class GameModeFrame extends JFrame implements Mode {
             public void actionPerformed(ActionEvent e) {
                 SwingUtilities.invokeLater(() -> {
                     try {
+                        MissedDucks.reset();
+                        TimerInGame.timerReset();
+                        ShouldGameStopCheck.end=false;
                         new Game(setMode(1));
 
                     } catch (IOException ex) {
@@ -78,6 +90,9 @@ public class GameModeFrame extends JFrame implements Mode {
             public void actionPerformed(ActionEvent e) {
                 SwingUtilities.invokeLater(() -> {
                     try {
+                        MissedDucks.reset();
+                        TimerInGame.timerReset();
+                        ShouldGameStopCheck.end=false;
                         new Game(setMode(2));
                     } catch (IOException ex) {
                         ex.printStackTrace();
@@ -98,6 +113,9 @@ public class GameModeFrame extends JFrame implements Mode {
             public void actionPerformed(ActionEvent e) {
                 SwingUtilities.invokeLater(() -> {
                     try {
+                        MissedDucks.reset();
+                        TimerInGame.timerReset();
+                        ShouldGameStopCheck.end=false;
                         new Game(setMode(3));
                     } catch (IOException ex) {
                         ex.printStackTrace();

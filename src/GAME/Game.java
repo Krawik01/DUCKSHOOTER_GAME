@@ -5,6 +5,8 @@ import OBJECTS.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,24 +14,20 @@ import java.util.List;
 
 public class Game extends JFrame {
 
+    JPanel panel = new JPanel() {
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            ImageIcon imageIcon = new ImageIcon("RESOURCES\\GameBackGround.png");
+            g.drawImage(imageIcon.getImage(), 0,0,this);
+            g.drawImage(imageIcon.getImage(), 0, 0, this);
+            g.drawImage(imageIcon.getImage(), 0, 0, this);
+            g.drawImage(imageIcon.getImage(), 0, 0, this);
+        }
+    };
 
-    List players = new ArrayList();
-    Timer timer;
-
-
-    JPanel panel = new JPanel();
-    JPanel panel2 = new JPanel();
-//    JPanel panel2 = new JPanel(){
-//        public void paint (Graphics g){
-//            menuStartPaint(g);
-//        }
-//    };
     JFrame frameG = new JFrame();
-    JLabel label;
 
-    int secound;
-
-    public Game(int mode) throws IOException {
+    public Game(int mode) throws IOException{
 
 //        String nick = JOptionPane.showInputDialog(null,
 //                "Your nickname: ",
@@ -40,6 +38,17 @@ public class Game extends JFrame {
 
 
         panel.setBackground(Color.cyan);
+
+        KeyStroke keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK + ActionEvent.SHIFT_MASK);
+        panel.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(keyStroke, "closeHotkey");
+        panel.getActionMap().put("closeHotkey", new AbstractAction() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        ShouldGameStopCheck.end = true;
+                        setVisible(false);
+                    }
+                });
+
 
         panel.setOpaque(true);
         panel.setLayout(null);

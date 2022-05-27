@@ -12,26 +12,36 @@ import java.io.IOException;
 
 public class Menu extends JFrame {
 
-    String status = "menu";
     JFrame frame = new JFrame("DUCK SHOOTER");
-    JPanel panel = new JPanel(){
-        public void paint (Graphics g){
-          menuStartPaint(g);
-      }
+    JPanel panel = new JPanel() {
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+
+            ImageIcon imageIcon = new ImageIcon("RESOURCES\\BACKGROUND.jpg");
+            g.drawImage(imageIcon.getImage(), 0,0,this);
+            g.drawImage(imageIcon.getImage(), 0, 0, this);
+            g.drawImage(imageIcon.getImage(), 0, 0, this);
+            g.drawImage(imageIcon.getImage(), 0, 0, this);
+            menuStartPaint(g);
+        }
     };
 
     Rectangle r = frame.getBounds();
-    int w = r.width;
 
 
-    JButton newGame = new JButton("NEW GAME");
-    JButton highScores = new JButton("HIGH SCORES");
-    JButton exit = new JButton("EXIT");
+    JButton newGame;
+    JButton highScores;
+    JButton exit;
 
 
     public Menu() throws IOException {
 
         this.setLayout(null);
+
+        newGame = new JButton("NEW GAME");
+        highScores = new JButton("HIGH SCORES");
+        exit = new JButton("EXIT");
+
 
         panel.setBorder(BorderFactory.createEmptyBorder(270, 10, 600, 3));
         Font buttonFont = new Font("Agency FB", Font.BOLD, 40);
@@ -39,6 +49,7 @@ public class Menu extends JFrame {
         setNewGameButton(buttonFont);
         setHighScoresButton(buttonFont);
         setExitButton(buttonFont);
+
         panel.updateUI();//aktualizuje obraz
         frame.add(panel);
         frame.setSize(800,600);
@@ -51,7 +62,7 @@ public class Menu extends JFrame {
         setBackGround();
         frame.repaint();
         frame.revalidate();
-
+        panel.updateUI();
 
     }
 
@@ -59,42 +70,31 @@ public class Menu extends JFrame {
 
         panel.add(newGame);
         newGame.setPreferredSize(new Dimension(400,55));
+        newGame.setBounds(270,10,600,3);
         newGame.setFont(buttonFont);
         newGame.setBackground(Color.yellow);
         if(ShouldGameStopCheck.end){
             newGame.setEnabled(false);
         }
 
-        newGame.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                SwingUtilities.invokeLater(GameModeFrame::new);
-            }
-        });
+        newGame.addActionListener(e -> SwingUtilities.invokeLater(GameModeFrame::new));
+        repaint();
     }
     public void setHighScoresButton(Font buttonFont){
         panel.add(highScores);
         highScores.setPreferredSize(new Dimension(400,55));
         highScores.setFont(buttonFont);
 
-        highScores.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                SwingUtilities.invokeLater(HighScore::new);
-            }
-        });
+        highScores.addActionListener(e -> SwingUtilities.invokeLater(HighScore::new));
+        repaint();
     }
     public void setExitButton(Font buttonFont){
         panel.add(exit);
         exit.setPreferredSize(new Dimension(400,55));
         exit.setFont(buttonFont);
 
-        exit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(1);
-            }
-        });
+        exit.addActionListener(e -> System.exit(1));
+        repaint();
     }
 
     public void setBackGround(){
@@ -102,6 +102,7 @@ public class Menu extends JFrame {
                 "");
         JLabel backGround= new JLabel("", icon, JLabel.CENTER);
         frame.add(backGround);
+        repaint();
     }
 
     public void menuStartPaint(Graphics g){
@@ -110,7 +111,7 @@ public class Menu extends JFrame {
         g.setFont(fnt0);
         g.setColor(Color.BLACK);
         g.drawString("DUCK SHOOTER GAME",215,100);
-
+        repaint();
     }
 
 

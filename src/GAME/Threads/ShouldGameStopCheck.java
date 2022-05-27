@@ -8,11 +8,12 @@ import OBJECTS.Points;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 
 public class ShouldGameStopCheck extends Thread {
     JFrame frame;
     JPanel panel;
-    JList<Player> playerJList;
+    ArrayList<Player> playersList;
 
     public static boolean end = false;
     JLabel gameOverLabel;
@@ -52,7 +53,8 @@ public class ShouldGameStopCheck extends Thread {
                 System.out.println(nick);
                 Player player = new Player(nick, Points.getValue(),TimerInGame.timeInGameMinutes, TimerInGame.timeInGameSecounds);
 
-             //   playerJList.add(player);
+                playersList.add(player);
+
                 frame.dispose();
             //    Points.reset();
                 HpIncrement.interrupted();

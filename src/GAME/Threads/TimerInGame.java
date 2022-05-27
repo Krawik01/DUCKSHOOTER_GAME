@@ -49,13 +49,6 @@ public class TimerInGame extends Thread{
 
         while (!isInterrupted()) {
 
-            try {
-                this.sleep(1000);
-            } catch (InterruptedException exc) {
-                interrupt();
-                //  break;
-            }
-
             if(timeInGameSecounds == 60){
                 timeInGameMinutes++;
                 timeInGameSecounds = 0;
@@ -80,11 +73,24 @@ public class TimerInGame extends Thread{
 
             pointsLabel.setText("Points: " + Points.getValue());
 
-            missedDucksLabel.setText("Missed: " + MissedDucks.getValue() + "/10");
+            if((MissedDucks.getValue()==10)||(MissedDucks.getValue()==11)) {
+                missedDucksLabel.setText("Missed: " + "10/10");
+            }else {
+                missedDucksLabel.setText("Missed: " + MissedDucks.getValue() + "/10");
+            }
 
+            try {
+                this.sleep(1000);
+            } catch (InterruptedException exc) {
+                interrupt();
 
+            }
 
         }
+    }
+    public static void timerReset(){
+        timeInGameSecounds = 0;
+        timeInGameMinutes = 0;
     }
 //    public static void setTime(int timeInGameSecounds, int timeInGameMinutes){
 //        if(timeInGameSecounds == 60){
