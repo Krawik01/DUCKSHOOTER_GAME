@@ -11,8 +11,8 @@ public class GunLevel {
         value++;
     }
 
-    void reset() {
-        value = 0;
+    public static void reset() {
+        value = 1;
     }
 
     public static int getValue() {
@@ -37,7 +37,7 @@ public class GunLevel {
             gun.setEnabled(true);
         }
         if((value == 4)&&(Points.getValue()> 450)){
-            gun.setEnabled(true);
+            gun.setEnabled(false);
         }
 
     }
@@ -45,11 +45,15 @@ public class GunLevel {
     public static Icon gunSetIcon() {
         Icon gunIcon2 = new ImageIcon("RESOURCES\\GunIcon2.png");
         Icon gunIcon3 = new ImageIcon("RESOURCES\\GunIcon3.png");
+        Icon maxLevel = new ImageIcon("RESOURCES\\maxLevel.png");
         if (value == 2) {
             return gunIcon2;
         }
         if (value == 3) {
             return gunIcon3;
+        }
+        if (value == 4){
+            return maxLevel;
         }
         else {
             return null;

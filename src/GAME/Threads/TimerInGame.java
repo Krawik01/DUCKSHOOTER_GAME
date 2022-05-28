@@ -30,24 +30,24 @@ public class TimerInGame extends Thread{
         timeInGameMinutes = 0;
         
         timerLabel = new JLabel();
-        timerLabel.setBounds(10,10,200,100);
+        timerLabel.setBounds(60,50,200,100);
         timerLabel.setHorizontalAlignment(JLabel.CENTER);
         timerLabel.setFont(fnt0);
         panel.add(timerLabel);
 
         pointsLabel = new JLabel();
-        pointsLabel.setBounds(2,80,200,100);
+        pointsLabel.setBounds(52,120,200,100);
         pointsLabel.setHorizontalAlignment(JLabel.CENTER);
         pointsLabel.setFont(fnt0);
         panel.add(pointsLabel);
 
         missedDucksLabel = new JLabel();
-        missedDucksLabel.setBounds(5,150,250,100);
+        missedDucksLabel.setBounds(40,200,250,100);
         missedDucksLabel.setHorizontalAlignment(JLabel.CENTER);
         missedDucksLabel.setFont(fnt0);
         panel.add(missedDucksLabel);
 
-        while (!isInterrupted()) {
+        while (!GameStop.end) {
 
             if(timeInGameSecounds == 60){
                 timeInGameMinutes++;
@@ -92,12 +92,4 @@ public class TimerInGame extends Thread{
         timeInGameSecounds = 0;
         timeInGameMinutes = 0;
     }
-//    public static void setTime(int timeInGameSecounds, int timeInGameMinutes){
-//        if(timeInGameSecounds == 60){
-//
-//            timeInGameSecounds = 0;
-//            timeInGameMinutes++;
-//        }
-//    }
-
 }

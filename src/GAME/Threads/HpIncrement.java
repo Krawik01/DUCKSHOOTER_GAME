@@ -1,7 +1,6 @@
 package GAME.Threads;
 
 import OBJECTS.DucksHp;
-import OBJECTS.MissedDucks;
 import OBJECTS.Points;
 
 import javax.swing.*;
@@ -16,7 +15,7 @@ HpIncrement extends Thread implements Runnable {
     }
     public void run() {
 
-        while (!ShouldGameStopCheck.end) {
+        while (!GameStop.end) {
             try {
                 this.sleep(5000);
                 // notify();

@@ -22,7 +22,7 @@ public class MoveFrog extends Thread {
     public void run() {
         setFrogWithOtBackground();
         int speed = 3;
-        while (!ShouldGameStopCheck.end) {
+        while (!GameStop.end) {
             try {
                 this.sleep(3);
             } catch (InterruptedException exc) {
@@ -30,7 +30,7 @@ public class MoveFrog extends Thread {
                 //  break;
             }
 
-            if(cloud.getX() == 1810){
+            if(cloud.getX() == 1770){
                 speed = -mode;
             }
             if(cloud.getX() == 0) {

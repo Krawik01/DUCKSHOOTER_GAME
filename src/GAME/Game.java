@@ -8,8 +8,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class Game extends JFrame {
@@ -29,22 +27,17 @@ public class Game extends JFrame {
 
     public Game(int mode) throws IOException{
 
-//        String nick = JOptionPane.showInputDialog(null,
-//                "Your nickname: ",
-//                "Enter your nickname",
-//                JOptionPane.PLAIN_MESSAGE);
-//        players.add(nick);
-        // setBackground();
+        System.out.println(DucksHp.redDuckHpGetValue());
+        System.out.println(GunLevel.getValue());
 
 
-        panel.setBackground(Color.cyan);
 
         KeyStroke keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK + ActionEvent.SHIFT_MASK);
         panel.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(keyStroke, "closeHotkey");
         panel.getActionMap().put("closeHotkey", new AbstractAction() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        ShouldGameStopCheck.end = true;
+                        GameStop.end = true;
                         setVisible(false);
                     }
                 });
@@ -95,31 +88,17 @@ public class Game extends JFrame {
         HpIncrement hpIncrement = new HpIncrement(panel);
         hpIncrement.start();
 
-        ShouldGameStopCheck shouldGameStopCheck = new ShouldGameStopCheck(frameG,panel);
+        GameStop shouldGameStopCheck = new GameStop(frameG,panel);
         shouldGameStopCheck.start();
 
 
-        Font fnt0 = new Font("Agency FB", Font.BOLD, 50);
-
         this.add(panel);
-       // setBackGround();
 
         this.setSize(1940, 1030);
         this.setResizable(true);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(frameG.HIDE_ON_CLOSE);
         this.setVisible(true);
-
-
-    }
-
-    public void setBackGround(){
-        ImageIcon icon = new ImageIcon("RESOURCES\\GameBackGround.png",
-                "");
-        JLabel backGround = new JLabel("", icon, JLabel.CENTER);
-
-        panel.add(backGround);
-        //zeby dzialalo to setLayout nie moze byc null
 
     }
 }

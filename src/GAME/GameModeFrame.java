@@ -1,8 +1,10 @@
 package GAME;
 
-import GAME.Threads.ShouldGameStopCheck;
+import GAME.Threads.GameStop;
 import GAME.Threads.TimerInGame;
 import MENU.Mode;
+import OBJECTS.DucksHp;
+import OBJECTS.GunLevel;
 import OBJECTS.MissedDucks;
 import OBJECTS.Points;
 
@@ -14,6 +16,7 @@ import java.io.IOException;
 
 public class GameModeFrame extends JFrame implements Mode {
 
+
     JPanel panel = new JPanel() {
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -22,14 +25,16 @@ public class GameModeFrame extends JFrame implements Mode {
             g.drawImage(imageIcon.getImage(), 0, 0, this);
             g.drawImage(imageIcon.getImage(), 0, 0, this);
             g.drawImage(imageIcon.getImage(), 0, 0, this);
+            GameModeStartPaint(g);
         }
     };
 
     JFrame frame = new JFrame("DUCK SHOOTER");
-
     JButton easy = new JButton("Easy");
     JButton medium = new JButton("Medium");
     JButton hard = new JButton("Hard");
+
+    public static int getMode;
     public GameModeFrame() {
 
         this.setLayout(null);
@@ -66,11 +71,10 @@ public class GameModeFrame extends JFrame implements Mode {
             public void actionPerformed(ActionEvent e) {
                 SwingUtilities.invokeLater(() -> {
                     try {
-                        MissedDucks.reset();
-                        TimerInGame.timerReset();
-                        Points.reset();
-                        ShouldGameStopCheck.end=false;
+                        resetGame();
+                        GameStop.end=false;
                         new Game(setMode(1));
+                        getMode=1;
 
                     } catch (IOException ex) {
                         ex.printStackTrace();
@@ -92,11 +96,10 @@ public class GameModeFrame extends JFrame implements Mode {
             public void actionPerformed(ActionEvent e) {
                 SwingUtilities.invokeLater(() -> {
                     try {
-                        MissedDucks.reset();
-                        TimerInGame.timerReset();
-                        Points.reset();
-                        ShouldGameStopCheck.end=false;
+                        resetGame();
+                        GameStop.end=false;
                         new Game(setMode(2));
+                        getMode=2;
                     } catch (IOException ex) {
                         ex.printStackTrace();
                     }
@@ -116,11 +119,10 @@ public class GameModeFrame extends JFrame implements Mode {
             public void actionPerformed(ActionEvent e) {
                 SwingUtilities.invokeLater(() -> {
                     try {
-                        MissedDucks.reset();
-                        TimerInGame.timerReset();
-                        Points.reset();
-                        ShouldGameStopCheck.end=false;
+                       resetGame();
+                        GameStop.end=false;
                         new Game(setMode(3));
+                        getMode=3;
                     } catch (IOException ex) {
                         ex.printStackTrace();
                     }
@@ -128,6 +130,13 @@ public class GameModeFrame extends JFrame implements Mode {
                 frame.dispose();
             }
         });
+    }
+    public static void resetGame(){
+        MissedDucks.reset();
+        TimerInGame.timerReset();
+        Points.reset();
+        DucksHp.ducksHpReset();
+        GunLevel.reset();
     }
 
 }

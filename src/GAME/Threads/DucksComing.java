@@ -24,7 +24,7 @@ public class DucksComing extends Thread implements Mode {
 
     public void run() {
 
-        while (!ShouldGameStopCheck.end) {
+        while (!GameStop.end) {
              levels(gun,panel,mode,2000);//stages 1-5
 
         }

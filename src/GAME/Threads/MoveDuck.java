@@ -25,7 +25,7 @@ public class MoveDuck extends Thread {
 
     public void run() {
 
-        while (!ShouldGameStopCheck.end) {
+        while (!GameStop.end) {
             try {
                 this.sleep(7);
             } catch (InterruptedException exc) {

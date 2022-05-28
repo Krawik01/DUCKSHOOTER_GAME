@@ -1,7 +1,6 @@
 package GAME.Threads;
 
 import OBJECTS.Cloud;
-import OBJECTS.Frog;
 
 import javax.swing.*;
 
@@ -23,7 +22,7 @@ public class MoveCloud extends Thread {
     public void run() {
         setCloudWithOutBackground();
         int speed = 3;
-        while (!ShouldGameStopCheck.end) {
+        while (!GameStop.end) {
             try {
                 this.sleep(2);
             } catch (InterruptedException exc) {

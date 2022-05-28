@@ -1,11 +1,9 @@
 package MENU;
 import GAME.GameModeFrame;
-import GAME.Threads.ShouldGameStopCheck;
+import GAME.Threads.GameStop;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 
 
@@ -73,7 +71,7 @@ public class Menu extends JFrame {
         newGame.setBounds(270,10,600,3);
         newGame.setFont(buttonFont);
         newGame.setBackground(Color.yellow);
-        if(ShouldGameStopCheck.end){
+        if(GameStop.end){
             newGame.setEnabled(false);
         }
 
