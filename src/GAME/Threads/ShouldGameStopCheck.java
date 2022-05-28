@@ -1,19 +1,21 @@
 package GAME.Threads;
 
-import OBJECTS.DucksHp;
 import OBJECTS.MissedDucks;
 import OBJECTS.Player;
 import OBJECTS.Points;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowEvent;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ShouldGameStopCheck extends Thread {
+    public static Player player;
+    public static File file = new File("RESOURCES\\players.bin");
     JFrame frame;
     JPanel panel;
-    ArrayList<Player> playersList;
+    static ArrayList<Player> playersList;
 
     public static boolean end = false;
     JLabel gameOverLabel;
@@ -41,35 +43,64 @@ public class ShouldGameStopCheck extends Thread {
                 interrupt();
 
             }
+
             if (MissedDucks.getValue() > 9) {
                 end();
-                //gameOverLabel.setVisible(true);
                 gameOverLabel.setText("GAME OVER");
-                //frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
                 String nick = JOptionPane.showInputDialog(null,
                         "Your nickname: ",
                         "Enter your nickname",
                         JOptionPane.PLAIN_MESSAGE);
                 System.out.println(nick);
-                Player player = new Player(nick, Points.getValue(),TimerInGame.timeInGameMinutes, TimerInGame.timeInGameSecounds);
 
-                playersList.add(player);
+                player = new Player(nick, Points.getValue(),TimerInGame.timeInGameMinutes, TimerInGame.timeInGameSecounds);
+            //    System.out.println(Player.nick + " " + Player.points + " " + Player.timeInGameMinutes + " " + Player.timeInGameSecounds);
+              //  System.out.println("Player: " + Player.nick + " added");
 
+                try {
+                    writeObjectToFile(player);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                try {
+                    readObjectFromFile(playersList);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                // playersList.add(player);
+
+               // System.out.println(playersList.get(0));
                 frame.dispose();
-            //    Points.reset();
                 HpIncrement.interrupted();
-//                DucksHp.ducksHpReset();
-//                MissedDucks.reset();
-//                TimerInGame.timeInGameSecounds = 0;
-//                TimerInGame.timeInGameMinutes = 0;
-
                 interrupt();
-
                 break;
-
-
             }
         }
+    }
+
+    public static void writeObjectToFile(Player obj) throws IOException {
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("player.file"));
+        Player player = new Player(obj.nick, obj.points, obj.timeInGameMinutes, obj.timeInGameSecounds);
+        objectOutputStream.writeObject(player);
+    }
+    public static void readObjectFromFile(ArrayList<Player> playersList) throws IOException, ClassNotFoundException {
+        ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(new File("player.file")));
+        Player myPlayer = (Player) objectInputStream.readObject();
+        System.out.println(myPlayer);
+        System.out.println(myPlayer.points);
+        System.out.println(myPlayer.timeInGameMinutes);
+        System.out.println(myPlayer.timeInGameSecounds);
+        playersList.add(new Player(myPlayer.nick,myPlayer.points,myPlayer.timeInGameMinutes,myPlayer.timeInGameSecounds));
+
+    }
+
+
+    public static ArrayList<Player> getPlayerList(){
+        return playersList;
     }
 
     public boolean end(){

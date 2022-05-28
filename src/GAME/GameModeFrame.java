@@ -4,6 +4,7 @@ import GAME.Threads.ShouldGameStopCheck;
 import GAME.Threads.TimerInGame;
 import MENU.Mode;
 import OBJECTS.MissedDucks;
+import OBJECTS.Points;
 
 import javax.swing.*;
 import java.awt.*;
@@ -67,6 +68,7 @@ public class GameModeFrame extends JFrame implements Mode {
                     try {
                         MissedDucks.reset();
                         TimerInGame.timerReset();
+                        Points.reset();
                         ShouldGameStopCheck.end=false;
                         new Game(setMode(1));
 
@@ -92,6 +94,7 @@ public class GameModeFrame extends JFrame implements Mode {
                     try {
                         MissedDucks.reset();
                         TimerInGame.timerReset();
+                        Points.reset();
                         ShouldGameStopCheck.end=false;
                         new Game(setMode(2));
                     } catch (IOException ex) {
@@ -115,6 +118,7 @@ public class GameModeFrame extends JFrame implements Mode {
                     try {
                         MissedDucks.reset();
                         TimerInGame.timerReset();
+                        Points.reset();
                         ShouldGameStopCheck.end=false;
                         new Game(setMode(3));
                     } catch (IOException ex) {

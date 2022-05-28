@@ -44,11 +44,12 @@ public class GunLevel {
 
     public static Icon gunSetIcon() {
         Icon gunIcon2 = new ImageIcon("RESOURCES\\GunIcon2.png");
+        Icon gunIcon3 = new ImageIcon("RESOURCES\\GunIcon3.png");
         if (value == 2) {
             return gunIcon2;
         }
         if (value == 3) {
-            return gunIcon2;
+            return gunIcon3;
         }
         else {
             return null;

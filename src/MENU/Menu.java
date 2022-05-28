@@ -85,7 +85,9 @@ public class Menu extends JFrame {
         highScores.setPreferredSize(new Dimension(400,55));
         highScores.setFont(buttonFont);
 
-        highScores.addActionListener(e -> SwingUtilities.invokeLater(HighScore::new));
+        highScores.addActionListener(e -> {
+            SwingUtilities.invokeLater(HighScore::new);
+        });
         repaint();
     }
     public void setExitButton(Font buttonFont){
