@@ -24,6 +24,9 @@ public class Player implements Serializable {
 
     }
 
+    public Integer getPoints(){
+        return points;
+    }
 
     @Override
     public String toString() {

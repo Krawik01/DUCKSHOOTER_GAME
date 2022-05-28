@@ -67,13 +67,14 @@ public class GameStop extends Thread implements Mode {
                 //Collections.sort(player);
                 Player.playersList.add(player);
 
-//                Player.playersList.sort(new Comparator<Player>() {
-//                    @Override
-//                    public int compare(Player o1, Player o2) {
-//                        return o2.points().compareTo(o1.points);
-//                    }
-//                });
+                ArrayList<Player> playerArrayList2 = new ArrayList<>();
 
+                Player.playersList.sort(new Comparator<Player>() {
+                    @Override
+                    public int compare(Player o1, Player o2) {
+                        return o2.getPoints().compareTo(o1.getPoints());
+                    }
+                });
                 try {
                     writeObjectToFile();
                 } catch (IOException e) {
