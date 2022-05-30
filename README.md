@@ -2,6 +2,9 @@
 A game of duck shooting. 
 Based on java swing library (without window builders).
 Game contains features like:
+
+-different types of ducks
+
 -three difficulty modes
 
 -weapon upgrades
